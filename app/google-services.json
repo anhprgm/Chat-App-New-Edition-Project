@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "158939732548",
+    "project_id": "chat-app-nep",
+    "storage_bucket": "chat-app-nep.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158939732548:android:c73267534daeb506b5ba11",
+        "android_client_info": {
+          "package_name": "com.theanhdev.chatappnep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158939732548-5mkiav96loccfkr5s92h6evl4826comj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBinPaeavpcIZwmLVl9BZjoaezSc9IFLcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158939732548-5mkiav96loccfkr5s92h6evl4826comj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
