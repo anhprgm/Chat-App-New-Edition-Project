@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
         enterBtn.setOnClickListener(v -> {
             addNewUser();
         });
-        
+
     }
     private void binding() {
         emailInput = findViewById(R.id.email);
