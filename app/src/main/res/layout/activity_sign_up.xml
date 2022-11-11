@@ -67,6 +67,13 @@
                 android:visibility="visible"
                 android:src="@drawable/enter_btn"
                 android:layout_marginTop="20dp"/>
+            <TextView
+                android:id="@+id/signUpText"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotomedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Have n account. Login"/>
             <ProgressBar
                 android:id="@+id/loader"
                 android:layout_width="60dp"

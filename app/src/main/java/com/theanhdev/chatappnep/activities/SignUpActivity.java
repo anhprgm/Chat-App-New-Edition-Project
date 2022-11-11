@@ -5,7 +5,9 @@ import static com.theanhdev.chatappnep.R.drawable.successi_ic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -52,6 +54,9 @@ public class SignUpActivity extends AppCompatActivity {
                         loader.setVisibility(View.GONE);
                         enterBtn.setImageDrawable(getResources().getDrawable(successi_ic));
                         enterBtn.setVisibility(View.VISIBLE);
+                        Intent intent = new Intent(this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     } else {
                         loader.setVisibility(View.GONE);
                         enterBtn.setVisibility(View.VISIBLE);

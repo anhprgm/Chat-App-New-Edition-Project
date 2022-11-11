@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,12 +31,14 @@ public class LoginActivity extends AppCompatActivity {
     private ImageView enterBtn;
     private FirebaseAuth mAuth;
     private ProgressBar loader;
+    private TextView textSignIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         binding();
+        signUpChangeScreen();
         emailInput.setOnClickListener(v -> enterBtn.setImageDrawable(getResources().getDrawable(enter_btn)));
     }
     private void binding() {
@@ -43,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.password);
         enterBtn = findViewById(R.id.enter);
         loader = findViewById(R.id.loader);
+        textSignIn = findViewById(R.id.signUpText);
     }
     @Override
     public void onStart() {
@@ -58,6 +62,13 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser();
             });
         }
+    }
+
+    private void signUpChangeScreen() {
+        textSignIn.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
     }
     private void loginUser() {
         String email = emailInput.getText().toString().trim();
