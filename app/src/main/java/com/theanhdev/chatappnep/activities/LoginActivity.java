@@ -1,14 +1,9 @@
 package com.theanhdev.chatappnep.activities;
 
 import static com.theanhdev.chatappnep.R.drawable.enter_btn;
-import static com.theanhdev.chatappnep.R.drawable.successi_ic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.util.Patterns;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -19,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText emailInput, passwordInput;
     private ImageView enterBtn;
     private FirebaseAuth mAuth;
-    private ProgressBar loader;
     private TextView textSignIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.email);
         passwordInput = findViewById(R.id.password);
         enterBtn = findViewById(R.id.enter);
-        loader = findViewById(R.id.loader);
+        ProgressBar loader = findViewById(R.id.loader);
         textSignIn = findViewById(R.id.signUpText);
     }
     @Override
@@ -58,9 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         } else {
-            enterBtn.setOnClickListener(v -> {
-                loginUser();
-            });
+            enterBtn.setOnClickListener(v -> loginUser());
         }
     }
 
@@ -73,14 +64,11 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser() {
         String email = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser user = mAuth.getCurrentUser();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                }
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser user = mAuth.getCurrentUser();
+            } else {
+                Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
             }
         });
     }
